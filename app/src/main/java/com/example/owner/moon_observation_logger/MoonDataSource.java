@@ -20,11 +20,16 @@ public class MoonDataSource {
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
 
+    /**
+     *
+     * @throws SQLException
+     */
     public void open() throws SQLException {
         database = dbHelper.getWritableDatabase();
     }
 
     public void close() {
+
         dbHelper.close();
     }
 

@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Moon Observation Logger</string>
     <string name="title">Welcome to Your Lunar Observing Logger</string>
+    <string name="saved_logs">Saved Moon Observation Logs</string>
+    <string name="add_new_log">Add New Log</string>
+    <string name="log_details">View Log Details</string>
+    <string name="delete_log">Delete</string>
 </resources>

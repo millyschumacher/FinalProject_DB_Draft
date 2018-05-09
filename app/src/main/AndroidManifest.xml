@@ -16,12 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LogsDetailActivity" />
         <activity android:name=".AddLogActivity" />
-        <activity android:name=".Moon" />
-        <activity android:name=".Welcome" />
-        <activity android:name=".MoonDataSource" />
-        <activity android:name=".MySQLiteHelper"></activity>
+        <activity android:name=".LogsDetailActivity" >
+        </activity>
     </application>
 
 </manifest>
