@@ -20,7 +20,7 @@ public class Moon implements Serializable {
     private String object_name;
 
 
-    public Moon() {
+    public Moon(String id, String date, String time, String latitude, String longitude, String location) {
     }
 
     /**
@@ -41,6 +41,10 @@ public class Moon implements Serializable {
         this.longitude = longitude;
         this.location = location;
         this.object_name = object_name;
+    }
+
+    public Moon() {
+
     }
 
     /**

@@ -13,17 +13,53 @@ import android.util.Log;
 public class MySQLiteHelper extends SQLiteOpenHelper {
 
     //Table name
-    public static final String TABLE_COMMENTS = "comments";
+    public static final String TABLE_LOG = "logs";
     //Database name
-    private static final String DATABASE_NAME = "commments.db";
+    private static final String DATABASE_NAME = "logs.db";
     //This is the version number
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
 
+    //Columns of the table
+    public static final String COLUMN_ID="id";
+    public static final String COLUMN_DATE="date";
+    public static final String COLUMN_TIME="time";
+    public static final String COLUMN_LATITUDE="latitude";
+    public static final String COLUMN_LONGITUDE="longitude";
+    public static final String COLUMN_LOCATION="location";
+    public static final String COLUMN_OBJECT_NAME="object_name";
 
+    /**
+     * Create TABLE
+     *
+     * This is the SQL statement required to create the empty table
+     */
     private static final String DATABASE_CREATE = String.format(
-            "create table %s( %s integer primary key autoincrement, " +
-                    "%s text not null+ COLUMN_RATING + \" text);",
-            TABLE_COMMENTS);
+                    "Create TABLE %s( " +
+                            "%sinteger primary key autoincrement, " +
+                            "%s text not null,%s text not null," +
+                            "%s text not null,%s text not null," +
+                            "%s text not null,%s text not null," +
+                            "%s text not null,);",
+                    TABLE_LOG,
+                    COLUMN_ID,
+                    COLUMN_DATE,
+                    COLUMN_TIME,
+                    COLUMN_LATITUDE,
+                    COLUMN_LONGITUDE,
+                    COLUMN_LOCATION,
+                    COLUMN_OBJECT_NAME);
+
+//    private static MySQLiteHelper sInstance;
+//    public static synchronized MySQLiteHelper getInstance(Context context) {
+//
+//        // Use the application context, which will ensure that you
+//        // don't accidentally leak an Activity's context.
+//        // See this article for more information: http://bit.ly/6LRzfx
+//        if (sInstance == null) {
+//            sInstance = new MySQLiteHelper(context.getApplicationContext());
+//        }
+//        return sInstance;
+//    }
 
     /**
      * MySQLiteHelper()
@@ -40,6 +76,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase database) {
+
         database.execSQL(DATABASE_CREATE);
     }
 
@@ -54,7 +91,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         Log.w(MySQLiteHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_COMMENTS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOG);
         onCreate(db);
     }
 

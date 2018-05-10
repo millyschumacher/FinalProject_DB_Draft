@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -45,12 +46,20 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("MAIN", "Hit oncreate ");
 
-// ###############will put back in with DB code
-// moonDataSource=new MoonDataSource();
-//       moonDataSource.open();
+        moonDataSource=new MoonDataSource(this);
+        moonDataSource.open();
 
         lvMoon = (ListView) findViewById(R.id.listvMoon);
         tvLogHeader = (TextView) findViewById(R.id.tvLogHeader);
+
+        moonAdapter = new MoonAdapter(this, android.R.layout.simple_list_item_single_choice, moonList);
+        lvMoon.setAdapter(moonAdapter);
+        lvMoon.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                positionSelected=position;
+            }
+        });
 
         btnAddLog = (Button) findViewById(R.id.btnAddLog);
         btnAddLog.setOnClickListener(new View.OnClickListener() {
@@ -75,29 +84,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        moonAdapter = new MoonAdapter(this, android.R.layout.simple_list_item_single_choice, moonList);
-        //lvMoon.setAdapter(moonAdapter);
-
-
     }
 
 
     /**
      *
      */
-    //$%^&*()(*&^%$%^&*This has been commented out for UI testing purposes, will put back in with DB code
-//    @Override
-//    protected void onResume() {
-//        moonDataSource.open();
-//        super.onResume();
-//    }
-//
-//    /**
-//     *
-//     */
-//    @Override
-//    protected void onPause() {
-//        moonDataSource.close();
-//        super.onPause();
-//    }
+    @Override
+    protected void onResume() {
+        moonDataSource.open();
+        super.onResume();
+    }
+
+    /**
+     *
+     */
+    @Override
+    protected void onPause() {
+        moonDataSource.close();
+        super.onPause();
+    }
 }

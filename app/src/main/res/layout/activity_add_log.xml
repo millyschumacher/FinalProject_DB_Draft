@@ -60,7 +60,7 @@
         android:text="Longtitude" />
 
     <EditText
-        android:id="@+id/etDate2"
+        android:id="@+id/etLongitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
