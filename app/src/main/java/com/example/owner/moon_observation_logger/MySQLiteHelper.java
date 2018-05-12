@@ -35,11 +35,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
      */
     private static final String DATABASE_CREATE = String.format(
                     "Create TABLE %s( " +
-                            "%sinteger primary key autoincrement, " +
+                            "%s integer primary key autoincrement, " +
                             "%s text not null,%s text not null," +
                             "%s text not null,%s text not null," +
-                            "%s text not null,%s text not null," +
-                            "%s text not null,);",
+                            "%s text not null,%s text not null);",
                     TABLE_LOG,
                     COLUMN_ID,
                     COLUMN_DATE,

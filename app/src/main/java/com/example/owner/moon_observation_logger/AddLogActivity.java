@@ -25,8 +25,8 @@ public class AddLogActivity extends AppCompatActivity {
         etTime = (EditText) findViewById(R.id.etTime);
         etLatitude = (EditText) findViewById(R.id.etLatitude);
         etLongitude = (EditText) findViewById(R.id.etLongitude);
-        etLatitude = (EditText) findViewById(R.id.etLocation);
-        etLatitude = (EditText) findViewById(R.id.etObject);
+        etLocation = (EditText) findViewById(R.id.etLocation);
+        etObject_Name = (EditText) findViewById(R.id.etObject);
 
 
         btnSave = (Button) findViewById(R.id.btnSave);
