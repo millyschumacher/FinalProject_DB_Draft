@@ -2,9 +2,9 @@ package com.example.owner.moon_observation_logger;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Variables for the components and classes are declared
     MoonDataSource moonDataSource;
-    Button btnDelete, btnAddLog, btnViewDetails;
+    Button btnDelete, btnAddLog, btnViewDetails, btnViewMoon;
     ListView lvMoon;
     ArrayAdapter<Moon> moonAdapter;
     int positionSelected;

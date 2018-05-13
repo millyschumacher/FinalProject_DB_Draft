@@ -102,15 +102,14 @@ public class MoonDataSource {
         List<Moon>logList=new ArrayList<Moon>();
         Cursor cursor = database.query(MySQLiteHelper.TABLE_LOG, null, null,
                 null, null, null, null, null);
-        //A while loop is used to go through a potentially unknown number of comments
-        //As long as the cursor isn't the last column, this will go through
+
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Moon log = cursorToLog(cursor);
             logList.add(log);
             cursor.moveToNext();
         }
-        // make sure to close the cursor
+
         cursor.close();
         return logList;
     }
