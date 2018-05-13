@@ -1,9 +1,10 @@
 package com.example.owner.moon_observation_logger;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -11,11 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
-import java.util.ArrayList;
 
 /**
  * This is the main activity that will allow a user to log data for a moon observation and
@@ -27,17 +23,22 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Variables for the components and classes are declared
     MoonDataSource moonDataSource;
     Button btnDelete, btnAddLog, btnViewDetails;
     ListView lvMoon;
     ArrayAdapter<Moon> moonAdapter;
     int positionSelected;
-    //A header of the logs, not a data display
+    //This is a header for the observation logs and not for data
     TextView tvLogHeader;
 
+    //A key to connect the serializing to the moon logs
     public static final String MOON_OBSERVATION_KEY="MOON";
 
     /**
+     * onCreate()
+     * This sets up the main activity
+     *
      * @param savedInstanceState
      */
     @Override
@@ -75,9 +76,24 @@ public class MainActivity extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                moonDataSource.deleteLog(moonDataSource.getMoonList().get(positionSelected));
-                moonAdapter.remove(moonDataSource.getMoonList().get(positionSelected));
-                moonAdapter.notifyDataSetChanged();
+                //An alert is created for this activity
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
+
+                builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        moonDataSource.deleteLog(moonDataSource.getMoonList().get(positionSelected));
+                        moonAdapter.remove(moonDataSource.getMoonList().get(positionSelected));
+                        moonAdapter.notifyDataSetChanged();
+                    }
+                });
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
             }
         });
 

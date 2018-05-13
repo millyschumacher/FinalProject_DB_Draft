@@ -93,9 +93,15 @@
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/btnSave"
+        android:id="@+id/btnSaveLog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Save Log" />
+
+    <Button
+        android:id="@+id/btnBacktoMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go Back" />
 
 </LinearLayout>

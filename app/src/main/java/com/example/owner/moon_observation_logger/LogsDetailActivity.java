@@ -31,6 +31,7 @@ public class LogsDetailActivity extends AppCompatActivity {
         etObject=(EditText)findViewById(R.id.etObject);
         btnBack=(Button)findViewById(R.id.buttonBack);
 
+        //This calls the methods in the Moon file for each variable
         etDate.setText(moon.getDate());
         etTime.setText(moon.getTime());
         etLatitude.setText(moon.getLatitude());

@@ -5,4 +5,11 @@
     <string name="add_new_log">Add New Log</string>
     <string name="log_details">View Log Details</string>
     <string name="delete_log">Delete</string>
+    <string name="back_toMain">Go Back</string>
+    <string name="dialog_message">Are you sure? This cannot be undone.</string>
+    <string name="dialog_title">Delete Log</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="alert_message">Remember to have complete logs. Are you sure you want to save?</string>
+    <string name="alert_title">Log Save</string>
 </resources>

@@ -26,7 +26,6 @@ public class MoonDataSource {
 
     private List<Moon> moonList;
     public List<Moon> getMoonList() {
-        Log.v("Gibbons", "returning moonList in MoonDataSource");
         return moonList;
     }
 
@@ -34,7 +33,6 @@ public class MoonDataSource {
     public MoonDataSource(Context context){
         dbHelper=new MySQLiteHelper(context);
         open();
-        Log.v("Gibbons", "initializing moonList in MoonDataSource");
         moonList = getAllLogs();
     }
 
@@ -83,7 +81,6 @@ public class MoonDataSource {
      */
     public void deleteLog(Moon log) {
         long id=log.getId();
-        System.out.println("Log deleted with id: " + id);
         database.delete(MySQLiteHelper.TABLE_LOG, MySQLiteHelper.COLUMN_ID
                 + " = " + id, null);
     }
@@ -109,8 +106,7 @@ public class MoonDataSource {
         //As long as the cursor isn't the last column, this will go through
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            Moon log = cursorToLog(cursor);               // Gibbons - This is not working an must be fixed
-//            Moon log =  new Moon(123, "Today", "time" , "12.123", "456.45", "School", "Moon");
+            Moon log = cursorToLog(cursor);
             logList.add(log);
             cursor.moveToNext();
         }
