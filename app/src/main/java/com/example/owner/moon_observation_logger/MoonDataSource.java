@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+import android.view.View;
 
 import org.w3c.dom.Comment;
 
@@ -22,8 +24,18 @@ public class MoonDataSource {
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
 
+    private List<Moon> moonList;
+    public List<Moon> getMoonList() {
+        Log.v("Gibbons", "returning moonList in MoonDataSource");
+        return moonList;
+    }
+
+
     public MoonDataSource(Context context){
         dbHelper=new MySQLiteHelper(context);
+        open();
+        Log.v("Gibbons", "initializing moonList in MoonDataSource");
+        moonList = getAllLogs();
     }
 
     /**
@@ -52,6 +64,7 @@ public class MoonDataSource {
     public Moon createLog(String date, String time, String latitude, String longitude, String location, String object_name) {
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_DATE, date);
+        values.put(MySQLiteHelper.COLUMN_TIME, time);
         values.put(MySQLiteHelper.COLUMN_LATITUDE, latitude);
         values.put(MySQLiteHelper.COLUMN_LONGITUDE, longitude);
         values.put(MySQLiteHelper.COLUMN_LOCATION, location);
@@ -60,6 +73,7 @@ public class MoonDataSource {
         //This is an insert statement to put the new moon log into the table
         long insertId = database.insert(MySQLiteHelper.TABLE_LOG, null, values);
         Moon newLog = new Moon(insertId, date, time, latitude, longitude, location, object_name);
+        moonList.add(newLog);
         return newLog;
     }
 
@@ -72,7 +86,7 @@ public class MoonDataSource {
         System.out.println("Log deleted with id: " + id);
         database.delete(MySQLiteHelper.TABLE_LOG, MySQLiteHelper.COLUMN_ID
                 + " = " + id, null);
-        }
+    }
 
     private Moon cursorToLog(Cursor cursor) {
         Moon log=new Moon();
@@ -90,11 +104,13 @@ public class MoonDataSource {
     public List<Moon>getAllLogs() {
         List<Moon>logList=new ArrayList<Moon>();
         Cursor cursor = database.query(MySQLiteHelper.TABLE_LOG, null, null,
-                null, null, null, null);
+                null, null, null, null, null);
         //A while loop is used to go through a potentially unknown number of comments
         //As long as the cursor isn't the last column, this will go through
+        cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            Moon log = cursorToLog(cursor);
+            Moon log = cursorToLog(cursor);               // Gibbons - This is not working an must be fixed
+//            Moon log =  new Moon(123, "Today", "time" , "12.123", "456.45", "School", "Moon");
             logList.add(log);
             cursor.moveToNext();
         }
@@ -103,4 +119,3 @@ public class MoonDataSource {
         return logList;
     }
 }
-

@@ -34,19 +34,19 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
      * This is the SQL statement required to create the empty table
      */
     private static final String DATABASE_CREATE = String.format(
-                    "Create TABLE %s( " +
-                            "%s integer primary key autoincrement, " +
-                            "%s text not null,%s text not null," +
-                            "%s text not null,%s text not null," +
-                            "%s text not null,%s text not null);",
-                    TABLE_LOG,
-                    COLUMN_ID,
-                    COLUMN_DATE,
-                    COLUMN_TIME,
-                    COLUMN_LATITUDE,
-                    COLUMN_LONGITUDE,
-                    COLUMN_LOCATION,
-                    COLUMN_OBJECT_NAME);
+            "Create TABLE %s( " +
+                    "%s integer primary key autoincrement, " +
+                    "%s text not null,%s text not null," +
+                    "%s text not null,%s text not null," +
+                    "%s text not null,%s text not null);",
+            TABLE_LOG,
+            COLUMN_ID,
+            COLUMN_DATE,
+            COLUMN_TIME,
+            COLUMN_LATITUDE,
+            COLUMN_LONGITUDE,
+            COLUMN_LOCATION,
+            COLUMN_OBJECT_NAME);
 
 //    private static MySQLiteHelper sInstance;
 //    public static synchronized MySQLiteHelper getInstance(Context context) {

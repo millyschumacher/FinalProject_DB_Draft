@@ -3,6 +3,7 @@ package com.example.owner.moon_observation_logger;
 import android.app.Activity;
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,11 @@ public class MoonAdapter extends ArrayAdapter<Moon> {
         this.rowLayout=rowLayout;
     }
 
+    public MoonAdapter(Context context, int resource, int tvID, List<Moon> moonList) {
+        super(context, resource, tvID, moonList);
+        this.context = context;
+        this.moonList = moonList;
+    }
 
     /**
      *
@@ -49,12 +55,12 @@ public class MoonAdapter extends ArrayAdapter<Moon> {
         View view = inflater.inflate(R.layout.moon_row_layout, null);
         Moon moon = moonList.get(position);
 
-        TextView tvDate=(TextView)view.findViewById(R.id.tvDate);
-        TextView tvTime=(TextView)view.findViewById(R.id.tvTime);
-        TextView tvLatitude=(TextView)view.findViewById(R.id.tvLatitude);
-        TextView tvLongitude=(TextView)view.findViewById(R.id.tvLongitude);
-        TextView tvLocation=(TextView)view.findViewById(R.id.tvLocation);
-        TextView tvObject=(TextView)view.findViewById(R.id.tvObject);
+        TextView tvDate= view.findViewById(R.id.tvDate);
+        TextView tvTime= view.findViewById(R.id.tvTime);
+        TextView tvLatitude= view.findViewById(R.id.tvLatitude);
+        TextView tvLongitude= view.findViewById(R.id.tvLongitude);
+        TextView tvLocation= view.findViewById(R.id.tvLocation);
+        TextView tvObject= view.findViewById(R.id.tvObject);
         tvDate.setText(moon.getDate());
         tvTime.setText(moon.getTime());
         tvLatitude.setText(moon.getLatitude());

@@ -20,9 +20,6 @@ public class Moon implements Serializable {
     private String object_name;
 
 
-    public Moon(String id, String date, String time, String latitude, String longitude, String location) {
-    }
-
     /**
      *
      * @param id

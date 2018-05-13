@@ -31,10 +31,11 @@ public class MainActivity extends AppCompatActivity {
     Button btnDelete, btnAddLog, btnViewDetails;
     ListView lvMoon;
     ArrayAdapter<Moon> moonAdapter;
-    List<Moon> moonList;
     int positionSelected;
-    Moon logSelected;
+    //A header of the logs, not a data display
     TextView tvLogHeader;
+
+    public static final String MOON_OBSERVATION_KEY="MOON";
 
     /**
      * @param savedInstanceState
@@ -44,15 +45,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.d("MAIN", "Hit oncreate ");
-
         moonDataSource=new MoonDataSource(this);
         moonDataSource.open();
 
         lvMoon = (ListView) findViewById(R.id.listvMoon);
         tvLogHeader = (TextView) findViewById(R.id.tvLogHeader);
 
-        moonAdapter = new MoonAdapter(this, android.R.layout.simple_list_item_single_choice, moonList);
+
+        moonAdapter = new MoonAdapter(this, R.layout.moon_row_layout, R.id.tvDate, moonDataSource.getMoonList());
         lvMoon.setAdapter(moonAdapter);
         lvMoon.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -62,28 +62,36 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnAddLog = (Button) findViewById(R.id.btnAddLog);
-        btnAddLog.setOnClickListener(new View.OnClickListener() {
+        btnAddLog.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
                 Intent addLogIntent = new Intent(view.getContext(), AddLogActivity.class);
                 finish();
                 startActivity(addLogIntent);
+
             }
         });
 
         btnDelete = (Button) findViewById(R.id.btnDelete);
+        btnDelete.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                moonDataSource.deleteLog(moonDataSource.getMoonList().get(positionSelected));
+                moonAdapter.remove(moonDataSource.getMoonList().get(positionSelected));
+                moonAdapter.notifyDataSetChanged();
+            }
+        });
 
 
         btnViewDetails = (Button) findViewById(R.id.btnViewDetails);
-        btnViewDetails.setOnClickListener(new OnClickListener() {
+        btnViewDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent viewDetailIntent=new Intent(btnViewDetails.getContext(),LogsDetailActivity.class);
-                viewDetailIntent.putExtra("Log",moonList.get(positionSelected));
+                Intent viewDetailIntent=new Intent(v.getContext(),LogsDetailActivity.class);
+                viewDetailIntent.putExtra("MOON",moonDataSource.getMoonList().get(positionSelected));
                 finish();
                 startActivity(viewDetailIntent);
             }
         });
-
     }
 
 
@@ -93,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         moonDataSource.open();
+        moonAdapter.notifyDataSetChanged();
         super.onResume();
     }
 

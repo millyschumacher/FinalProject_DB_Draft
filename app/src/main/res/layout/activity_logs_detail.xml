@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/etxtDate" />
+        android:id="@+id/etDate" />
 
     <TextView
         android:text="Time "
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/etxtTime" />
+        android:id="@+id/etTime" />
 
     <TextView
         android:text="Latitude"
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/etxtLatitude" />
+        android:id="@+id/etLatitude" />
 
     <TextView
         android:text="Longitude"
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/etxtLongitude" />
+        android:id="@+id/etLongitude" />
 
     <TextView
         android:text="Location"
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/etxtLocation" />
+        android:id="@+id/etLocation" />
 
     <TextView
         android:text="Object Name/ID"
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/etxtObject" />
+        android:id="@+id/etObject" />
 
     <Button
         android:text="Back"
