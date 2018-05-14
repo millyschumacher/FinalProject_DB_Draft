@@ -13,4 +13,13 @@
     <string name="alert_message">Remember to have complete logs. Are you sure you want to save?</string>
     <string name="alert_title">Log Save</string>
     <string name="moon_image">Moon Map</string>
+    <string name="logger_title">Fill Out Your Log</string>
+    <string name="logger_date">Date</string>
+    <string name="logger_time">Time</string>
+    <string name="logger_latitude">Latitude</string>
+    <string name="logger_longitude">Longitude</string>
+    <string name="logger_location">Locaton</string>
+    <string name="logger_savebtn">Save Log</string>
+    <string name="logger_backbtn">Go Back</string>
+    <string name="logger_obj">Object Name/ID</string>
 </resources>

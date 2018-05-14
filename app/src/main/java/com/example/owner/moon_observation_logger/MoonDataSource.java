@@ -23,13 +23,24 @@ public class MoonDataSource {
     // Database fields
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
-
     private List<Moon> moonList;
+
+    /**
+     * getMoonList()
+     *
+     * This returns the arraylist of the moon data
+     * @return
+     */
     public List<Moon> getMoonList() {
         return moonList;
     }
 
-
+    /**
+     * MoonDataSource()
+     *
+     * The method creates a connection to get all of the logs in the database
+     * @param context
+     */
     public MoonDataSource(Context context){
         dbHelper=new MySQLiteHelper(context);
         open();
@@ -37,20 +48,28 @@ public class MoonDataSource {
     }
 
     /**
+     * open()
      *
+     * The database helper instance connects to the database
      * @throws SQLException
      */
     public void open() throws SQLException {
         database = dbHelper.getWritableDatabase();
     }
 
+    /**
+     * close()
+     * Closes the connection to the database helper instance
+     */
     public void close() {
 
         dbHelper.close();
     }
 
     /**
+     * createLog()
      *
+     * This method pushes all of the moon observation data to the database
      * @param date
      * @param time
      * @param latitude
@@ -76,7 +95,9 @@ public class MoonDataSource {
     }
 
     /**
+     * deleteLog()
      *
+     * This deletes a log based on the user's input
      * @param log
      */
     public void deleteLog(Moon log) {
@@ -85,6 +106,13 @@ public class MoonDataSource {
                 + " = " + id, null);
     }
 
+    /**
+     * cursorToLog()
+     *
+     * The method sets up a new log
+     * @param cursor
+     * @return
+     */
     private Moon cursorToLog(Cursor cursor) {
         Moon log=new Moon();
         log.setId(cursor.getLong(cursor.getColumnIndex(MySQLiteHelper.COLUMN_ID)));
@@ -98,7 +126,13 @@ public class MoonDataSource {
     }
 
 
-    public List<Moon>getAllLogs() {
+    /**
+     * getAllLogs()
+     *
+     * The method queries the database for all of the columns for the observation data
+     * @return
+     */
+    public List<Moon> getAllLogs() {
         List<Moon>logList=new ArrayList<Moon>();
         Cursor cursor = database.query(MySQLiteHelper.TABLE_LOG, null, null,
                 null, null, null, null, null);

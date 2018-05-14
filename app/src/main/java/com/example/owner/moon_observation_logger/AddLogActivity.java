@@ -16,11 +16,18 @@ public class AddLogActivity extends AppCompatActivity {
     Button btnSave, btnBacktoMain;
     MoonDataSource moonDataSource;
 
+    /**
+     * onCreate()
+     *
+     * This sets up the activity with the alerts for the user to enter new observation logs
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_log);
 
+        //Creating a new database connection
         moonDataSource = new MoonDataSource(this);
         moonDataSource.open();
 
@@ -48,6 +55,7 @@ public class AddLogActivity extends AppCompatActivity {
                 AlertDialog.Builder alert = new AlertDialog.Builder(AddLogActivity.this);
                 alert.setMessage(R.string.alert_message).setTitle(R.string.alert_title);
 
+                //The user has the option of filling out an incomplete log if they want to
                 alert.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         moonDataSource.createLog(date, time, latitude, longitude, location, object_name);
@@ -56,6 +64,7 @@ public class AddLogActivity extends AppCompatActivity {
                         startActivity(toMainIntent);
                     }
                 });
+                //If the user decides to complete the log, it cancels saving
                 alert.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();

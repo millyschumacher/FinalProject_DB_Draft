@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Variables for the components and classes are declared
+    //Variables and fields for the components and classes are declared
     MoonDataSource moonDataSource;
     Button btnDelete, btnAddLog, btnViewDetails, btnViewMoon;
     ListView lvMoon;
@@ -46,13 +46,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //An instance of the moondb
         moonDataSource=new MoonDataSource(this);
         moonDataSource.open();
 
+        //Set up of the list view and header
         lvMoon = (ListView) findViewById(R.id.listvMoon);
         tvLogHeader = (TextView) findViewById(R.id.tvLogHeader);
 
-
+        //Detects the location of the list view for the logs when a user clicks
         moonAdapter = new MoonAdapter(this, R.layout.moon_row_layout, R.id.tvDate, moonDataSource.getMoonList());
         lvMoon.setAdapter(moonAdapter);
         lvMoon.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //The button for a user to add a new log
         btnAddLog = (Button) findViewById(R.id.btnAddLog);
         btnAddLog.setOnClickListener(new OnClickListener() {
             public void onClick(View view) {
@@ -72,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //The button for a user to delete, and has an alert to warn the user about the loss of data
         btnDelete = (Button) findViewById(R.id.btnDelete);
         btnDelete.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -80,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setMessage(R.string.dialog_message).setTitle(R.string.dialog_title);
 
+                //If a user is okay with the data loss, it deltes
                 builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         moonDataSource.deleteLog(moonDataSource.getMoonList().get(positionSelected));
@@ -98,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        //A button to allow the user to view the log details
         btnViewDetails = (Button) findViewById(R.id.btnViewDetails);
         btnViewDetails.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +118,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     *
+     * onResume()
+     * Starts up the main activity
      */
     @Override
     protected void onResume() {
@@ -122,7 +129,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * onPause()
+     * The database connection is closed off when the activity is not open
      */
     @Override
     protected void onPause() {

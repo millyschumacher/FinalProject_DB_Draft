@@ -11,14 +11,14 @@
         android:id="@+id/etFillLog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fill Out Your Log"
+        android:text="@string/logger_title"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Date:" />
+        android:text="@string/logger_date" />
 
     <EditText
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
         android:id="@+id/tvTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Time" />
+        android:text="@string/logger_time" />
 
     <EditText
         android:id="@+id/etTime"
@@ -44,7 +44,7 @@
         android:id="@+id/tvLatitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Latitude" />
+        android:text="@string/logger_latitude" />
 
     <EditText
         android:id="@+id/etLatitude"
@@ -57,7 +57,7 @@
         android:id="@+id/tvLongitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Longtitude" />
+        android:text="@string/logger_longitude" />
 
     <EditText
         android:id="@+id/etLongitude"
@@ -70,7 +70,7 @@
         android:id="@+id/tvLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Location" />
+        android:text="@string/logger_location" />
 
     <EditText
         android:id="@+id/etLocation"
@@ -83,7 +83,7 @@
         android:id="@+id/tvObject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Object Name/ID:" />
+        android:text="@string/logger_obj" />
 
     <EditText
         android:id="@+id/etObject"
@@ -96,12 +96,12 @@
         android:id="@+id/btnSaveLog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save Log" />
+        android:text="@string/logger_savebtn" />
 
     <Button
         android:id="@+id/btnBacktoMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Go Back" />
+        android:text="@string/logger_backbtn" />
 
 </LinearLayout>

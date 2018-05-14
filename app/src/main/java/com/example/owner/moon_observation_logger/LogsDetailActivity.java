@@ -8,13 +8,19 @@ import android.widget.Button;
 import android.widget.EditText;
 
 /**
- *
+ * A class to view all entered observation logs in a different activity
  */
 public class LogsDetailActivity extends AppCompatActivity {
 
     Button btnBack;
     EditText etDate, etTime, etLatitude, etLongitude, etLocation, etObject;
 
+    /**
+     * onCreate()
+     *
+     * This sets up the activity to allow a user to look at one log's details in a separate activity
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

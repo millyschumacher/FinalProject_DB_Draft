@@ -11,6 +11,7 @@ import java.util.Date;
  */
 
 public class Moon implements Serializable {
+    //Declare all of the fields
     private long id;
     private String date;
     private String time;
@@ -21,7 +22,9 @@ public class Moon implements Serializable {
 
 
     /**
+     * Moon()
      *
+     * This is a constructor to set up a moon observation log
      * @param id
      * @param date
      * @param time
@@ -40,12 +43,17 @@ public class Moon implements Serializable {
         this.object_name = object_name;
     }
 
+    /**
+     * Moon()
+     *
+     * AN empty default constructor
+     */
     public Moon() {
 
     }
 
     /**
-     *
+     * A getter for the ID
      * @return
      */
     public long getId() {
@@ -53,7 +61,7 @@ public class Moon implements Serializable {
     }
 
     /**
-     *
+     * A setter for the ID
      * @param id
      */
     public void setId(long id) {
@@ -61,7 +69,7 @@ public class Moon implements Serializable {
     }
 
     /**
-     *
+     * A getter for the date
      * @return
      */
     public String getDate() {
@@ -69,7 +77,7 @@ public class Moon implements Serializable {
     }
 
     /**
-     *
+     * A setter for the date
      * @param date
      */
     public void setDate(String date) {
@@ -77,7 +85,7 @@ public class Moon implements Serializable {
     }
 
     /**
-     *
+     * A getter for the time
      * @return
      */
     public String getTime() {
@@ -85,7 +93,7 @@ public class Moon implements Serializable {
     }
 
     /**
-     *
+     * A setter for the time
      * @param time
      */
     public void setTime(String time) {
@@ -93,7 +101,7 @@ public class Moon implements Serializable {
     }
 
     /**
-     *
+     * A getter for the latitude
      * @return
      */
     public String getLatitude() {
@@ -101,7 +109,7 @@ public class Moon implements Serializable {
     }
 
     /**
-     *
+     * A setter for the latitude
      * @param latitude
      */
     public void setLatitude(String latitude) {
@@ -109,7 +117,7 @@ public class Moon implements Serializable {
     }
 
     /**
-     *
+     * A getter for the longitude
      * @return
      */
     public String getLongitude() {
@@ -117,7 +125,7 @@ public class Moon implements Serializable {
     }
 
     /**
-     *
+     * A setter for the longitude
      * @param longitude
      */
     public void setLongitude(String longitude){
@@ -125,7 +133,7 @@ public class Moon implements Serializable {
     }
 
     /**
-     *
+     * A getter for the location
      * @return
      */
     public String getLocation(){
@@ -133,7 +141,7 @@ public class Moon implements Serializable {
     }
 
     /**
-     *
+     * A setter for the location
      * @param location
      */
     public void setLocation(String location) {
@@ -141,7 +149,7 @@ public class Moon implements Serializable {
     }
 
     /**
-     *
+     * A getter for the object name or ID
      * @return
      */
     public String getObject_name() {
@@ -149,7 +157,7 @@ public class Moon implements Serializable {
     }
 
     /**
-     *
+     * A setter for the object name or ID
      * @param object_name
      */
     public void setObject_name(String object_name) {
@@ -158,7 +166,9 @@ public class Moon implements Serializable {
 
 
     /**
+     * toString()
      *
+     * A method to return the values of the log in a string
      * @return
      */
     @Override

@@ -18,13 +18,16 @@ import java.util.List;
  */
 public class MoonAdapter extends ArrayAdapter<Moon> {
 
+    //Declared fields for the list of observations
     private final Context context;
     private List<Moon> moonList;
     private int rowLayout;
 
 
     /**
+     * MoonAdapter()
      *
+     * A constructor to set up the display for the array list of logs
      * @param context
      * @param rowLayout
      * @param moonList
@@ -36,6 +39,15 @@ public class MoonAdapter extends ArrayAdapter<Moon> {
         this.rowLayout=rowLayout;
     }
 
+    /**
+     * Moon Adapter()
+     *
+     * Am overloaded constructor to set up the display for the logs
+     * @param context
+     * @param resource
+     * @param tvID
+     * @param moonList
+     */
     public MoonAdapter(Context context, int resource, int tvID, List<Moon> moonList) {
         super(context, resource, tvID, moonList);
         this.context = context;
@@ -43,7 +55,9 @@ public class MoonAdapter extends ArrayAdapter<Moon> {
     }
 
     /**
+     * getView()
      *
+     * This method sets up the layout view using the XML file and connects the variables
      * @param position
      * @param convertView
      * @param parent
